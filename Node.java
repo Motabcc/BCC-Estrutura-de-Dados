@@ -50,4 +50,13 @@ class ListaSe{
         this.ultimo= p;
 
     }
+    public Node insereOrdenado(Node p, int info){
+        Node novo = new Node(info);
+        //O novo item aponta pra referncia do que o anterior estava apontando
+        novo.proximo= p.proximo;
+        //O item antigo passa apontar para o novo item
+
+        p.proximo=novo;
+        return novo;
+    }
 }
