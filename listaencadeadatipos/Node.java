@@ -13,12 +13,27 @@ public class Node {
     }
 }
 
-class ListaGE{
+class ListaDuplamenteEncadeada{
     public Node primeiro;
     public Node ultimo;
 
+    public boolean vazia(){
+        return this.primeiro ==null;
+    }
+
     public void insereAntecessor(Node p, int elemento) {
         Node novo = new Node(elemento);
+        if(p == this.primeiro){
+            novo.proximo = p;
+            p.anterior = novo;
+            this.primeiro=novo;
+        }
+        else{
+            novo.proximo =p;
+            novo.anterior = p.anterior;
 
+            p.anterior.proximo =novo;
+            p.anterior= novo;
+        }
     }
 }
