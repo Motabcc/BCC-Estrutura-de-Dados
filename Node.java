@@ -21,7 +21,8 @@ class ListaSe{
 
         }
         else{
-
+            p.proximo=this.primeiro;
+            this.primeiro=p;
         }
     }
 
