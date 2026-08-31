@@ -50,7 +50,7 @@ class ListaSe{
         this.ultimo= p;
 
     }
-    public Node insereOrdenado(Node p, int info){
+    public Node insereDepois(Node p, int info){
         Node novo = new Node(info);
         //O novo item aponta pra referncia do que o anterior estava apontando
         novo.proximo= p.proximo;
@@ -59,4 +59,33 @@ class ListaSe{
         p.proximo=novo;
         return novo;
     }
+
+    public void insereOrdenado(int info){
+        //insere primeiro
+    if(this.vazia()){
+        this.inserePrimeiro(info);
+    }
+    //insere primeiro
+    else{
+        if(info<= this.primeiro.info){
+        this.inserePrimeiro(info);
+    }
+        //insere ultimo
+        else{
+            if(info >= this.ultimo.info){
+            this.insereUltimo(info);
+            }
+            //insere no meio
+            else{
+                Node q= null;
+                Node p = this.primeiro;
+                while (p.info < info){
+                    q =p;
+                    p=p.proximo;
+                }
+                this.insereDepois(q,info);
+            }
+        }
+    }
+  }
 }
