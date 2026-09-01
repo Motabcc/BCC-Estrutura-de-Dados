@@ -60,32 +60,27 @@ class ListaSe{
         return novo;
     }
 
-    public void insereOrdenado(int info){
-        //insere primeiro
-    if(this.vazia()){
-        this.inserePrimeiro(info);
-    }
-    //insere primeiro
-    else{
-        if(info<= this.primeiro.info){
-        this.inserePrimeiro(info);
-    }
-        //insere ultimo
-        else{
-            if(info >= this.ultimo.info){
+    public void insereOrdenado(int info) {
+        if (this.vazia()) {
+            this.inserePrimeiro(info);
+        }
+        else if (info <= this.primeiro.info) {
+            this.inserePrimeiro(info);
+        }
+        else if (info >= this.ultimo.info) {
             this.insereUltimo(info);
+        }
+        else {
+            // Inserção no meio da lista
+            Node q = null;
+            Node p = this.primeiro;
+
+            while (p.info < info) {
+                q = p;
+                p = p.proximo;
             }
-            //insere no meio
-            else{
-                Node q= null;
-                Node p = this.primeiro;
-                while (p.info < info){
-                    q =p;
-                    p=p.proximo;
-                }
-                this.insereDepois(q,info);
-            }
+
+            this.insereDepois(q, info);
         }
     }
-  }
 }
